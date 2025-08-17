@@ -1,6 +1,8 @@
 package com.example.demo.student;
 import jakarta.persistence.*;  // ✅ Use jakarta for Spring Boot 3
 import java.time.LocalDate;
+import java.time.Period;
+
 @Entity
 @Table
 public class Student {
@@ -27,20 +29,20 @@ public class Student {
     public Student(long id,
                    String name,
                    String email,
-                   LocalDate dob,
-                   Integer age) {
+                   LocalDate dob
+                  ) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.age = age;
+
     }
 
-    public Student(String name, String email, LocalDate dob, Integer age) {
+    public Student(String name, String email, LocalDate dob) {
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.age = age;
+
     }
 
     public long getId() {
@@ -76,7 +78,8 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+
+        return Period.between(this.dob , LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
@@ -90,7 +93,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", dob=" + dob +
-                ", age=" + age +
+                ", age=" + this.getAge() +
                 '}';
     }
 }
