@@ -1,14 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>My App</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<h1>Hello from Plain Frontend!</h1>
-<button onclick="loadMessage()">Load Message</button>
-<p id="message"></p>
 
-<script src="script.js"></script>
+<header>
+    <h1>Student Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="welcome">
+        <h2>Welcome, Student!</h2>
+        <p>Explore your enrolled courses and discover new categories.</p>
+        <button onclick="loadMessage()">Load Message from Backend</button>
+        <p id="message"></p>
+    </section>
+
+    <section class="courses">
+        <h2>My Courses</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Java Basics</h3>
+                <p>Introduction to Java programming fundamentals.</p>
+            </div>
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Learn HTML, CSS, and JavaScript to build websites.</p>
+            </div>
+            <div class="card">
+                <h3>Database Systems</h3>
+                <p>Understand SQL and relational databases.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <h2>Course Categories</h2>
+        <ul class="category-list">
+            <li>Programming</li>
+            <li>Design</li>
+            <li>Data Science</li>
+            <li>Marketing</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Student Dashboard</p>
+</footer>
+
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>
